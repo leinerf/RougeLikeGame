@@ -45,8 +45,6 @@ public class EnemyController : MonoBehaviour
 
             }
 
-
-
             moveDirection.Normalize();
             theRB.velocity = moveDirection * moveSpeed;
 
@@ -58,6 +56,7 @@ public class EnemyController : MonoBehaviour
                 {
                     fireCounter = fireRate;
                     Instantiate(bullet, firePoint.position, firePoint.rotation);
+                    AudioManager.instance.PlaySFX(13);
                 }
             }
 
@@ -79,10 +78,12 @@ public class EnemyController : MonoBehaviour
     public void DamageEnemy(int damage)
     {
         Instantiate(hitEffect, transform.position, transform.rotation);
+        AudioManager.instance.PlaySFX(2);
         health -= damage;
         if (health <= 0)
         {
             Destroy(gameObject);
+            AudioManager.instance.PlaySFX(1);
             int index = Random.Range(0, deathSplatters.Length);
             int rotation = Random.Range(0, 4);
             Instantiate(deathSplatters[index], transform.position, Quaternion.Euler(0f, 0f, rotation * 90));

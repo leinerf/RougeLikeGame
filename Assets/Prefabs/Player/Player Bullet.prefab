@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8734603167416772240}
   m_Layer: 9
   m_Name: Player Bullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -974216585
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -3328242913338228825, guid: 338d65dcd5e3247b88073a2fc16a3607,
     type: 3}

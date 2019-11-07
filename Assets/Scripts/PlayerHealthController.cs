@@ -27,11 +27,12 @@ public class PlayerHealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (invincCount > 0) 
+        if (invincCount > 0)
         {
 
             invincCount -= Time.deltaTime;
-            if(invincCount <= 0){
+            if (invincCount <= 0)
+            {
                 PlayerController.instance.bodySR.color = new Color(
                 PlayerController.instance.bodySR.color.r,
                 PlayerController.instance.bodySR.color.g,
@@ -40,7 +41,7 @@ public class PlayerHealthController : MonoBehaviour
             );
             }
         }
-        
+
     }
 
     public void DamagePlayer()
@@ -48,15 +49,32 @@ public class PlayerHealthController : MonoBehaviour
         if (invincCount <= 0)
         {
             currentHealth--;
+            AudioManager.instance.PlaySFX(11);
             MakeInvincible(damageInvincLength);
             if (currentHealth <= 0)
             {
                 PlayerController.instance.gameObject.SetActive(false);
+                AudioManager.instance.PlaySFX(9);
                 UIController.instance.deathScreen.SetActive(true);
+                AudioManager.instance.PlayGameOver();
             }
-            UIController.instance.healthSlider.value = currentHealth;
-            UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+            UpdateHealthBar();
         }
+    }
+
+    private void UpdateHealthBar(){
+        UIController.instance.healthSlider.value = currentHealth;
+        UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+    }
+
+    public void HealPlayer(int healAmount)
+    {
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        UpdateHealthBar();
     }
 
     public void MakeInvincible(float length)

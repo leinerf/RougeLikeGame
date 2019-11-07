@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4485984064834933689}
   - component: {fileID: 4485984064834933670}
   - component: {fileID: 4485984064834933671}
-  m_Layer: 0
+  - component: {fileID: 5924700099812897547}
+  m_Layer: 12
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -532531913
+  m_SortingLayer: 2
+  m_SortingOrder: -1
   m_Sprite: {fileID: 4098156409588004937, guid: c46e7a3bc9ed84827835dac061e182a4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,6 +103,11 @@ MonoBehaviour:
   - {fileID: 4285064025742381691, guid: 4ee479b32eb814a2aafa22d7496c25e7, type: 3}
   - {fileID: 5429656180679777244, guid: 671a06b01e10c4ab3a22eea561b3a86a, type: 3}
   - {fileID: 8910246602130314908, guid: 7ce52be5c5957442a84046c197409f46, type: 3}
+  shouldDropItem: 1
+  itemsToDrop:
+  - {fileID: 8796299540566445763, guid: 2c5aced19c7874541857c2c760315ab1, type: 3}
+  - {fileID: 8349600388064784597, guid: fb81ea55ce52349cba078d57ea764d9f, type: 3}
+  itemDropPercent: 68
   maxPieces: 5
 --- !u!61 &4485984064834933671
 BoxCollider2D:
@@ -129,3 +135,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8125, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5924700099812897547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485984064834933668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2405fd3faf0f4d77bd7a173b961d744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
