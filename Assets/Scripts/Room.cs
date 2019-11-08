@@ -11,6 +11,16 @@ public class Room : MonoBehaviour
     public List<GameObject> enemies = new List<GameObject>();//resizable array
 
     private bool roomActive = false;
+
+    // Before game starts
+    private void Awake()
+    {
+        foreach (GameObject door in doors)
+        {
+            door.SetActive(false);
+        }
+
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -22,15 +32,15 @@ public class Room : MonoBehaviour
     {
         if (roomActive && openWhenEnemiesCleared && enemies.Count > 0)
         {
-            for (int i = 0; i < enemies.Count; i++) 
+            for (int i = 0; i < enemies.Count; i++)
             {
-                if(enemies[i] == null)
+                if (enemies[i] == null)
                 {
                     enemies.RemoveAt(i);
                     i--;//for items removed the next item's index becomes the removed items index
                 }
             }
-            if(enemies.Count == 0)
+            if (enemies.Count == 0)
             {
                 foreach (GameObject door in doors)
                 {
@@ -39,7 +49,7 @@ public class Room : MonoBehaviour
                 closedWhenEntered = false;
             }
         }
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
