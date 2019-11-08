@@ -10,7 +10,7 @@ public class Room : MonoBehaviour
     public GameObject[] doors;//cant resize without work
     public List<GameObject> enemies = new List<GameObject>();//resizable array
 
-    private bool roomActive = false;
+    private bool roomActive;
 
     // Before game starts
     private void Awake()
@@ -30,17 +30,23 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (roomActive && openWhenEnemiesCleared && enemies.Count > 0)
+
+        if (roomActive && openWhenEnemiesCleared)
         {
-            for (int i = 0; i < enemies.Count; i++)
+            if (enemies.Count > 0)
             {
-                if (enemies[i] == null)
+                for (int i = 0; i < enemies.Count; i++)
                 {
-                    enemies.RemoveAt(i);
-                    i--;//for items removed the next item's index becomes the removed items index
+                    if (enemies[i] == null)
+                    {
+                        enemies.RemoveAt(i);
+                        Debug.Log(enemies.Count);
+                        i--;//for items removed the next item's index becomes the removed items index
+                    }
                 }
             }
-            if (enemies.Count == 0)
+
+            else if (enemies.Count == 0)
             {
                 foreach (GameObject door in doors)
                 {

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4485984064834933670}
   - component: {fileID: 4485984064834933671}
   - component: {fileID: 5924700099812897547}
+  - component: {fileID: 1370982134}
   m_Layer: 12
   m_Name: Box
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -532531913
   m_SortingLayer: 2
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 4098156409588004937, guid: c46e7a3bc9ed84827835dac061e182a4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -147,3 +148,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2405fd3faf0f4d77bd7a173b961d744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1370982134
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485984064834933668}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
