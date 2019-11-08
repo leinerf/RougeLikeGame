@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9152e640c6d646cbb97ad6196d3193b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelToLoad: Test
+  LevelToLoad: Victory
 --- !u!1 &7711371419085550332
 GameObject:
   m_ObjectHideFlags: 0

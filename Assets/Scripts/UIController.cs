@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIController : MonoBehaviour
     public Image fadeScreen;
     public float fadeSpeed;
     private bool fadeToBlack, fadeOutBlack;
+    public string newGameScene, mainMenuScreen;
+    public GameObject pauseMenu;
     private void Awake()
     {
         instance = this;
@@ -26,7 +29,7 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(fadeOutBlack)
+        if (fadeOutBlack)
         {
             fadeScreen.color = new Color(
                 fadeScreen.color.r,
@@ -34,13 +37,13 @@ public class UIController : MonoBehaviour
                 fadeScreen.color.b,
                 Mathf.MoveTowards(fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime)
             );
-            if(fadeScreen.color.a == 0f)
+            if (fadeScreen.color.a == 0f)
             {
                 fadeOutBlack = false;
             }
         }
 
-        if(fadeToBlack)
+        if (fadeToBlack)
         {
             fadeScreen.color = new Color(
                 fadeScreen.color.r,
@@ -48,7 +51,7 @@ public class UIController : MonoBehaviour
                 fadeScreen.color.b,
                 Mathf.MoveTowards(fadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime)
             );
-            if(fadeScreen.color.a == 1f)
+            if (fadeScreen.color.a == 1f)
             {
                 fadeToBlack = false;
             }
@@ -56,8 +59,26 @@ public class UIController : MonoBehaviour
 
     }
 
-    public void StartFadeToBlack(){
+    public void StartFadeToBlack()
+    {
         fadeToBlack = true;
         fadeOutBlack = false;
+    }
+
+    public void NewGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(newGameScene);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(mainMenuScreen);
+    }
+
+    public void Resume()
+    {
+        LevelManager.instance.PauseUnPause();
     }
 }
