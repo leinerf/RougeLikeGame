@@ -5,12 +5,12 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
 
-    public bool closedWhenEntered, openWhenEnemiesCleared;
+    public bool closedWhenEntered;
 
-    public GameObject[] doors;//cant resize without work
-    public List<GameObject> enemies = new List<GameObject>();//resizable array
+    public GameObject[] doors;
 
-    private bool roomActive;
+    [HideInInspector]
+    public bool roomActive;
 
     // Before game starts
     private void Awake()
@@ -28,35 +28,7 @@ public class Room : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-        if (roomActive && openWhenEnemiesCleared)
-        {
-            if (enemies.Count > 0)
-            {
-                for (int i = 0; i < enemies.Count; i++)
-                {
-                    if (enemies[i] == null)
-                    {
-                        enemies.RemoveAt(i);
-                        Debug.Log(enemies.Count);
-                        i--;//for items removed the next item's index becomes the removed items index
-                    }
-                }
-            }
-
-            else if (enemies.Count == 0)
-            {
-                foreach (GameObject door in doors)
-                {
-                    door.SetActive(false);
-                }
-                closedWhenEntered = false;
-            }
-        }
-
-    }
+    void Update() { }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -68,6 +40,7 @@ public class Room : MonoBehaviour
             {
                 foreach (GameObject door in doors)
                 {
+                    
                     door.SetActive(true);
                 }
             }
@@ -81,5 +54,13 @@ public class Room : MonoBehaviour
             roomActive = false;
         }
     }
+
+    public void OpenDoors()
+    {
+        foreach (GameObject door in doors)
+        {
+            door.SetActive(false);
+        }
+        closedWhenEntered = false;
+    }
 }
-//on child object because we want to have the walls interact with bulletes
